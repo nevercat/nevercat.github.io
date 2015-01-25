@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Hello World | NEVERCAT</title>
+  <title>浏览器判断 - 令人头疼纠结的浏览器兼容问题 | NEVERCAT</title>
   <meta name="author" content="NEVERCAT">
   
   <meta name="description" content="简笔画 而我开始相信，奇迹正在敲门。">
@@ -11,7 +11,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="Hello World"/>
+  <meta property="og:title" content="浏览器判断 - 令人头疼纠结的浏览器兼容问题"/>
   <meta property="og:site_name" content="NEVERCAT"/>
 
   
@@ -72,37 +72,36 @@
   <div class="post-content">
     <header>
       
-      <time datetime="2015-01-25T02:10:59.000Z"><a href="/2015/01/25/hello-world/">周日, 1月 25 2015, 10:10:59 上午</a></time>
+      <time datetime="2012-07-20T10:28:19.000Z"><a href="/2012/07/20/-e6-b5-8f-e8-a7-88-e5-99-a8-e5-88-a4-e6-96-ad-e4-bb-a4-e4-ba-ba-e5-a4-b4-e7-96-bc-e7-ba-a0-e7-bb-93-e7-9a-84-e6-b5-8f-e8-a7-88-e5-99-a8-e5-85-bc-e5-ae-b9-e9-97-ae-e9-a2-98/">周五, 7月 20 2012, 6:28:19 晚上</a></time>
 
   
-    <h1 class="title">Hello World</h1>
+    <h1 class="title">浏览器判断 - 令人头疼纠结的浏览器兼容问题</h1>
   
 
 
+  
+  <div class="categories">
+  	<i class="fa fa-folder-open"></i>
+    <a href="/categories/亘古不变学习些事/">亘古不变学习些事</a>
+  </div>
+
+
+  
+  <div class="tags">
+  	<i class="fa fa-tag"></i>
+    <a href="/tags/javascript/">javascript</a>
+  </div>
 
 <div class="clear"></div>
       
     </header>
     <div class="entry">
       
-        <p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">trobuleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick_Start">Quick Start</h2>
-<h3 id="Create_a_new_post">Create a new post</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-
-<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run_server">Run server</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-
-<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate_static_files">Generate static files</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-
-<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy_to_remote_sites">Deploy to remote sites</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-
-<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <p>今天在人人上面看到华中科技大学思存工作室推出了一个2012年新生专题，一打开网页，在页首就出现个橙色的亮条，提示我“您正在使用IE6或IE7内核的浏览器，为了您更高的浏览体验，推荐您使用chrome/FireFox/Opara/IE8/IE9等浏览器来浏览本网站！”原来我用的是搜狗浏览器兼容模式，切换到高速模式后，亮条消失。IE内核的浏览器越来越不给力，尤其是IE6和IE7，IE8和IE9稍微好点但也越来越力不从心了，于是结合前几天处理自己博客浏览器兼容时遇到的问题，想到模仿这个用javascript写一个浏览器判断，也好用在自己的博客上，提示那些执着于IE6/7的童鞋们该升级浏览器啦~</p>
+<p>其实就是个简单的判断过程，判断浏览器和浏览器的版本，如果browser == “Microsoft Internet Explorer” &amp;&amp; trim_Version == “MSIE7.0”) || (browser == “Microsoft Internet Explorer” &amp;&amp; trim_Version == “MSIE6.0”，返回提示框，否则不提示。然后代码如下：</p>
+<p>$(document).ready(function () {<br>//浏览器判断<br>var browser = navigator.appName;<br>var b_version = navigator.appVersion;<br>var version = b_version.split(“;”);<br>if (version[1] != undefined) {<br>var trim_Version = version[1].replace(/[ ]/g, “”);<br>if ((browser == “Microsoft Internet Explorer” &amp;&amp; trim_Version == “MSIE7.0”) || (browser == “Microsoft Internet Explorer” &amp;&amp; trim_Version == “MSIE6.0”)) {<br>$(“body”).append($(‘&lt;div style=”height: 30px;background: #FFD42A;top:0;line-height:30px;”&gt;&lt;div style=”width:900px;”&gt;您正在使用IE6或IE7内核的浏览器，为了您更高的浏览体验，推荐您使用chrome/FireFox/Opara/IE8/IE9等浏览器来浏览本网站！&lt;span style=”cursor: pointer; margin-left: 80px; display: inline-block;” onclick=”$(this).parent().parent().fadeOut(500)”&gt;X&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;’));<br>}<br>}</p>
+<p>将上面的代码保存为.js文件，注意要用UTF-8编码保存，我下午是用记事本直接编辑的，记事本默认是ANSI编码，然后导致上传到网站始终不能正确显示，后来查找好半天才发现是编码问题，但如果是用dreamweaver之类的软件编辑应该就不会出现编码问题。然后在网页的head标签内或者body标签内引用&lt;script src=”<em>**</em>.js” type=”text/javascript”&gt;&lt;/script&gt;即可。可能还需要用css控制一下样式什么的……</p>
+<p>没想到写的第一篇学习类文章是写浏览器的，囧。。比较简单，但很实用，可以把代码封装起来以后直接调用，呵呵~</p>
 
       
     </div>
@@ -127,8 +126,10 @@
           <div class="clearfix"></div>
           <nav id="pagination">
   
+    <a href="/2012/07/27/-e7-9b-9b-e5-a4-a9-e7-bd-91-e7-bb-9c-e7-9a-84-e9-82-a3-e4-ba-9b-e4-ba-8b/" class="alignleft prev"><i class="fa fa-long-arrow-left"></i>Next</a>
   
-    <a href="/2013/12/31/2013-12-31-eoy/" class="alignright next">Prev<i class="fa fa-long-arrow-right"></i></a>
+  
+    <a href="/2012/07/19/-e7-99-be-e6-97-a0-e8-81-8a-e8-b5-96-e7-9a-84-e6-97-a5-e5-ad-90/" class="alignright next">Prev<i class="fa fa-long-arrow-right"></i></a>
   
   <div class="clearfix"></div>
 </nav>
@@ -144,7 +145,7 @@
 
   
       <!-- Duoshuo Comment BEGIN -->
-<div class="ds-thread" data-thread-key="/2015/01/25/hello-world/"></div>
+<div class="ds-thread" data-thread-key="/2012/07/20/-e6-b5-8f-e8-a7-88-e5-99-a8-e5-88-a4-e6-96-ad-e4-bb-a4-e4-ba-ba-e5-a4-b4-e7-96-bc-e7-ba-a0-e7-bb-93-e7-9a-84-e6-b5-8f-e8-a7-88-e5-99-a8-e5-85-bc-e5-ae-b9-e9-97-ae-e9-a2-98/"></div>
 <!-- Duoshuo Comment END -->
   
 </section>
