@@ -129,11 +129,7 @@
     </header>
     <div class="entry">
       
-        <p>突然就实习已经一周了，初步适应了盛天网络的工作环境，其实还很好啦，公司给我们实习生单独安排了一间工作室，有空调有饮水机有电脑，而且工作很自由，应该说，工作环境很好吧~于是马上就6点了，下班之前来写点东西咯。</p>
-<p>跟我一块实习的有2个，一个来自武汉理工，另一个来自中南民大，理工的那个居然还是大一的，通信工程专业，下个月才升大二，当时我就震惊了，想去年我大一的暑假在干嘛来着？！民大的那个呢，大三的软件工程专业，据说精通java。跟他们在一起也蛮开心的。每天弄完自己的工作我们就在一块闲聊打游戏，反正boss也听不到看不到，哈哈~！</p>
-<p>湖北盛天网络技术股份有限公司是个不太标准的互联网企业，尽管它自称是湖北省最大的互联网企业，但他们的业务范围主要是为网吧提供整体解决方案，我感觉吧就是个非主流的互联网公司，听他们的HR说正在积极准备上市，估计最快明年吧。我们在研发部，和其他部门不在一栋楼里，每天上下班还要按指纹打卡记考勤，搞得我都不敢迟到了……每天的工作情况在下班之前还要以邮件的形式发给4个人，我们的头，总boss，技术总监和项目总监。那个总boss还是华师毕业的，算是和我校友吧~啊哈哈。。</p>
-<p>额啊，看外面貌似下雨了，居然一下班就下雨，真坑爹…算了，撤！</p>
-
+        <p>突然就实习已经一周了，初步适应了盛天网络的工作环境，其实还很好啦，公司给我们实习生单独安排了一间工作室，有空调有饮水机有电脑，而且工作很自由，应该说，工作环境很好吧~于是马上就6点了，下班之前来写点东西咯。<br>
       
     </div>
     <footer>
@@ -272,20 +268,7 @@
     </header>
     <div class="entry">
       
-        <p>今天在人人上面看到华中科技大学思存工作室推出了一个2012年新生专题，一打开网页，在页首就出现个橙色的亮条，提示我“您正在使用IE6或IE7内核的浏览器，为了您更高的浏览体验，推荐您使用chrome/FireFox/Opara/IE8/IE9等浏览器来浏览本网站！”原来我用的是搜狗浏览器兼容模式，切换到高速模式后，亮条消失。IE内核的浏览器越来越不给力，尤其是IE6和IE7，IE8和IE9稍微好点但也越来越力不从心了，于是结合前几天处理自己博客浏览器兼容时遇到的问题，想到模仿这个用javascript写一个浏览器判断，也好用在自己的博客上，提示那些执着于IE6/7的童鞋们该升级浏览器啦~</p>
-<p>其实就是个简单的判断过程，判断浏览器和浏览器的版本，如果</p>
-<blockquote>
-<p>browser == “Microsoft Internet Explorer” &amp;&amp; trim_Version == “MSIE7.0”) || (browser == “Microsoft Internet Explorer” &amp;&amp; trim_Version == “MSIE6.0”</p>
-</blockquote>
-<p>则返回提示框，否则不提示。然后代码如下：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">$(document).ready(function () {</div><div class="line">//浏览器判断</div><div class="line">var <span class="variable">browser =</span> navigator.appName;</div><div class="line">var <span class="variable">b_version =</span> navigator.appVersion;</div><div class="line">var <span class="variable">version =</span> b_version.split(<span class="string">";"</span>);</div><div class="line"><span class="keyword">if</span> (version[<span class="number">1</span>] != undefined) {</div><div class="line">var <span class="variable">trim_Version =</span> version[<span class="number">1</span>].replace(/[ ]/g, <span class="string">""</span>);</div><div class="line"><span class="keyword">if</span> ((<span class="variable">browser =</span>= <span class="string">"Microsoft Internet Explorer"</span> && <span class="variable">trim_Version =</span>= <span class="string">"MSIE7.0"</span>) || (<span class="variable">browser =</span>= <span class="string">"Microsoft Internet Explorer"</span> && <span class="variable">trim_Version =</span>= <span class="string">"MSIE6.0"</span>)) {</div><div class="line">$(<span class="string">"body"</span>).append($('&lt;div <span class="variable">style=</span><span class="string">"height: 30px;background: #FFD42A;top:0;line-height:30px;"</span>&gt;&lt;div <span class="variable">style=</span><span class="string">"width:900px;"</span>&gt;您正在使用IE6或IE7内核的浏览器，为了您更高的浏览体验，推荐您使用chrome/FireFox/Opara/IE8/IE9等浏览器来浏览本网站！&lt;span <span class="variable">style=</span><span class="string">"cursor: pointer; margin-left: 80px; display: inline-block;"</span> <span class="variable">onclick=</span><span class="string">"$(this).parent().parent().fadeOut(500)"</span>&gt;X&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;'));</div><div class="line">}</div><div class="line">}</div></pre></td></tr></table></figure>
-
-<p>将上面的代码保存为.js文件，注意要用UTF-8编码保存，我下午是用记事本直接编辑的，记事本默认是ANSI编码，然后导致上传到网站始终不能正确显示，后来查找好半天才发现是编码问题，但如果是用dreamweaver之类的软件编辑应该就不会出现编码问题。然后在网页的head标签内或者body标签内引用</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"****.js"</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></div></pre></td></tr></table></figure>
-
-<p>即可。可能还需要用css控制一下样式什么的……</p>
-<p>没想到写的第一篇学习类文章是写浏览器的，囧。。比较简单，但很实用，可以把代码封装起来以后直接调用，呵呵~</p>
-
+        <p>今天在人人上面看到华中科技大学思存工作室推出了一个2012年新生专题，一打开网页，在页首就出现个橙色的亮条，提示我“您正在使用IE6或IE7内核的浏览器，为了您更高的浏览体验，推荐您使用chrome/FireFox/Opara/IE8/IE9等浏览器来浏览本网站！”原来我用的是搜狗浏览器兼容模式，切换到高速模式后，亮条消失。IE内核的浏览器越来越不给力，尤其是IE6和IE7，IE8和IE9稍微好点但也越来越力不从心了，于是结合前几天处理自己博客浏览器兼容时遇到的问题，想到模仿这个用javascript写一个浏览器判断，也好用在自己的博客上，提示那些执着于IE6/7的童鞋们该升级浏览器啦~<br>
       
     </div>
     <footer>
@@ -417,11 +400,7 @@
     <div class="entry">
       
         <p>今天上午进行大学生计算机设计大赛的校内结项答辩。现在写这个的时候已经结束了。</p>
-<p>还是昨天上午在群里收到答辩的通知的，结果昨晚通宵没回寝室在实验室奋战，导致早上喉咙有点痛，上午浑浑噩噩的进行了展示，想必我的陈述应该很糟吧。不过终究是过去了。现在只需要静静的等候结果就好……</p>
-<p>作为这个项目的负责人，我真的很愧疚。从一开始我就没有起到这个带头人的作用，整个团队的合作、沟通都存在问题。我承认我是个不善于表达自己的人，也从没有过领导别人的经验，失去了一个作为组织者应该有的决策能力。项目做到这个份上，基本没能帮上什么忙，负责人却只是沦为一个打酱油的，我很恨自己，没有能力，没有水平。当然很感谢陈利老师，肖昌雷老师，金鹏学长，还有羊森，马望，朱雪莲。要是没有你们的帮助，这个项目估计到现在连结项都完不成，更不用说还去参加比赛了。陈老师今天在答辩结束后在办公室说的那些话我真的很有感触，抛开这个项目不谈，作为一个大学生，一个计算机科班的大学生，我以后的路到底要怎么走。陈老师说，我现在还是大二，比起羊森，朱雪莲他们还有好多路需要走，其实做一件事不在乎有没有结果，重在这个过程中你获得了什么，学到了什么。我必须正视自己的缺点和未来了。</p>
-<p>每做一件事都是刚开始时兴趣很强烈，到后来就慢慢的就懈怠了，心有余而力不足？我又在找借口了。一直自认为自己是个很靠谱的人，可真正到考验自己的时候就变得极其不靠谱。为什么会变成这样……</p>
-<p>头很痛，算了，去休息了。下午再奢侈的睡一下午，从明天开始新的开始……Fighting吧~</p>
-
+<p>还是昨天上午在群里收到答辩的通知的，结果昨晚通宵没回寝室在实验室奋战，导致早上喉咙有点痛，上午浑浑噩噩的进行了展示，想必我的陈述应该很糟吧。不过终究是过去了。现在只需要静静的等候结果就好……<br>
       
     </div>
     <footer>

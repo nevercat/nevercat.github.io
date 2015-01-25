@@ -84,7 +84,7 @@
   
   <div class="categories">
   	<i class="fa fa-folder-open"></i>
-    <a href="/categories/亘古不变学习些事/">亘古不变学习些事</a>
+    <a href="/categories/study/">study</a>
   </div>
 
 
@@ -99,26 +99,15 @@
     </header>
     <div class="entry">
       
-        <pre><code>   去年在新浪的开放平台上申请了个App Key和App Secret，然后调用新浪的API在自己博客上弄了个微博发布器的微博组件，通过这个发布器发布的微博会显示“来自 简笔画”，并且点击 简笔画 可以跳转到自己的博客网站，但只限于网页端的。
+        <p>去年在新浪的开放平台上申请了个App Key和App Secret，然后调用新浪的API在自己博客上弄了个微博发布器的微博组件，通过这个发布器发布的微博会显示“来自 简笔画”，并且点击 简笔画 可以跳转到自己的博客网站，但只限于网页端的。<br><a id="more"></a><br>前不久看到华科联创团队UniqueStudio的孩纸们开发了个叫做“Fuubo”的安卓平台的微博发布器，专注于提升新浪微博发送体验的发送助手，然后我想到我能不能也做个类似的简笔画安卓客户端呢，由于木有Android开发经验，只是略懂一点java，就准备在Fuubo的基础上进行二次开发，但后来发现Fuubo并没有开放源码并且开发者也没有发布开发文档，我用apktool解包后研究了许久也没搞清楚里面到底是怎么写的，后来想到了四次元。</p>
+<p>四次元是一款第三方新浪微博客户端，基本包含了微博的所有功能，最重要的是开发者将其开源了，在Github上可以找到源码和开发文档，研究了下，然后成功的实现了四次元的二次开发，修改了四次元的尾巴。</p>
+<p>具体的实现方法如下：</p>
+<p>首先你需要有自己的app key和app secret，然后在电脑上下载好四次元的.apk安装包，目前最新版是weiciyuan0.483.apk，再下载apktool，最新版是apktool1.5.1.tar.bz2和apktool-install-windows-r05-ibot.tar，两个都要下载，前者用来解包，后者用来打包。然后解压apktool的这2个文件，将里面的内容（共有3个文件：apktool.jar、aapt.exe和apktool.bat）复制到任意一个盘里，为了之后输入命令提示行简单点就直接放在盘符下，不要放在几级目录下，例如D盘，然后将weiciyuan0.483.apk也放在D盘。现在准备工作就绪。</p>
+<p>打开命令提示符，输入d:或者cd /d d:回车进入D盘，然后输入apktool.jar d weiciyuan0.483.apk weiciyuan0.483，d的意思是解包，然后你会发现D盘多了一个weiciyuan0.483的文件夹（此时命令提示符先不要关，后面还要用），进入这个文件夹，找到smali/org/qii/weiciyuan/ui/login/OAuthActivity.smali，用notepad++或者记事本打开，搜索1065511513替换成你的app key，然后保存，接着找到smali/org/qii/weiciyuan/dao/ URLHelper.smali，搜索1065511513替换成你的app key，搜索df428e88aae8bd31f20481d149c856ed替换成你的app secret，然后也保存，再在命令提示符里面输入apktool.jar b weiciyuan0.483，b的意思是封包，然后你会在weiciyuan0.483文件夹下看到多了2个文件夹build和dist，其中build中存放.class中间文件，这个不用管，在dist中就找到名为weiciyuan0.483.apk新的安装包了。</p>
+<p>重新打包的.apk文件一般来说还安装不了，还需要进行签名，下载Auto-sign，解压后将新的weiciyuan0.483.apk放在这个文件夹中，重命名为update.zip（必须修改成这个名字，不然签名软件识别不了！），运行Sign.bat，命令提示符中会提示成功的信息，按任意键退出，会发现多了个update_signed.zip的文件，修改后缀为apk，新的update_signed.apk就是最终的安装包。</p>
+<p>以上原理很简单，新浪微博的授权需要AppKey和授权回调页，用WebView或浏览器打开，输入用户名、密码授权，拦截跳转链接，截取其中的 token，而“四次元”的尾巴默认方式在org.qii.weiciyuan.ui.login.OAuthActivity里。org.qii.weiciyuan.dao.URLHelper.URL_OAUTH2_ACCESS_AUTHORIZE、org.qii.weiciyuan.dao.URLHelper.APP_KEY和org.qii.weiciyuan.dao.URLHelper.DIRECT_URL分别对应API地址、AppKey和授权回调页面，所以其实到这儿还没完，你需要保证你的授权回调页面也正确，在 <a href="http://open.weibo.com/apps/[你的app" target="_blank" rel="external">http://open.weibo.com/apps/[你的app</a> key]/info/advanced 页面的OAuth2.0授权设置里面的授权回调页填写 <a href="https://api.weibo.com/oauth2/default.html，保存。此时就大功告成！将.apk安装包拷进手机安装即可。" target="_blank" rel="external">https://api.weibo.com/oauth2/default.html，保存。此时就大功告成！将.apk安装包拷进手机安装即可。</a></p>
+<p>同理，这个适用于将四次元的尾巴修改为任意机型的尾巴。你可以在网上搜已经公开了的机型的app key和app secret，比如爱疯的。接下来，嗯，屌丝就可以逆袭了。。O__O”…</p>
 
-    前不久看到华科联创团队UniqueStudio的孩纸们开发了个叫做“Fuubo”的安卓平台的微博发布器，专注于提升新浪微博发送体验的发送助手，然后我想到我能不能也做个类似的简笔画安卓客户端呢，由于木有Android开发经验，只是略懂一点java，就准备在Fuubo的基础上进行二次开发，但后来发现Fuubo并没有开放源码并且开发者也没有发布开发文档，我用apktool解包后研究了许久也没搞清楚里面到底是怎么写的，后来想到了四次元。
-
-    四次元是一款第三方新浪微博客户端，基本包含了微博的所有功能，最重要的是开发者将其开源了，在Github上可以找到源码和开发文档，研究了下，然后成功的实现了四次元的二次开发，修改了四次元的尾巴。
-
-    具体的实现方法如下：
-
-    首先你需要有自己的app key和app secret，然后在电脑上下载好四次元的.apk安装包，目前最新版是weiciyuan0.483.apk，再下载apktool，最新版是apktool1.5.1.tar.bz2和apktool-<span class="operator"><span class="keyword">install</span>-windows-r05-ibot.tar，两个都要下载，前者用来解包，后者用来打包。然后解压apktool的这<span class="number">2</span>个文件，将里面的内容（共有<span class="number">3</span>个文件：apktool.jar、aapt.exe和apktool.bat）复制到任意一个盘里，为了之后输入命令提示行简单点就直接放在盘符下，不要放在几级目录下，例如D盘，然后将weiciyuan0<span class="number">.483</span>.apk也放在D盘。现在准备工作就绪。
-
-    打开命令提示符，输入d:或者cd /d d:回车进入D盘，然后输入apktool.jar d weiciyuan0<span class="number">.483</span>.apk weiciyuan0<span class="number">.483</span>，d的意思是解包，然后你会发现D盘多了一个weiciyuan0<span class="number">.483</span>的文件夹（此时命令提示符先不要关，后面还要用），进入这个文件夹，找到smali/org/qii/weiciyuan/ui/login/OAuthActivity.smali，用notepad++或者记事本打开，搜索<span class="number">1065511513</span>替换成你的app <span class="keyword">key</span>，然后保存，接着找到smali/org/qii/weiciyuan/dao/ URLHelper.smali，搜索<span class="number">1065511513</span>替换成你的app <span class="keyword">key</span>，搜索df428e88aae8bd31f20481d149c856ed替换成你的app secret，然后也保存，再在命令提示符里面输入apktool.jar b weiciyuan0<span class="number">.483</span>，b的意思是封包，然后你会在weiciyuan0<span class="number">.483</span>文件夹下看到多了<span class="number">2</span>个文件夹build和dist，其中build中存放.class中间文件，这个不用管，在dist中就找到名为weiciyuan0<span class="number">.483</span>.apk新的安装包了。
-
-    重新打包的.apk文件一般来说还安装不了，还需要进行签名，下载Auto-<span class="keyword">sign</span>，解压后将新的weiciyuan0<span class="number">.483</span>.apk放在这个文件夹中，重命名为<span class="keyword">update</span>.zip（必须修改成这个名字，不然签名软件识别不了！），运行<span class="keyword">Sign</span>.bat，命令提示符中会提示成功的信息，按任意键退出，会发现多了个update_signed.zip的文件，修改后缀为apk，新的update_signed.apk就是最终的安装包。
-
-    以上原理很简单，新浪微博的授权需要AppKey和授权回调页，用WebView或浏览器打开，输入用户名、密码授权，拦截跳转链接，截取其中的 token，而“四次元”的尾巴默认方式在org.qii.weiciyuan.ui.login.OAuthActivity里。org.qii.weiciyuan.dao.URLHelper.URL_OAUTH2_ACCESS_AUTHORIZE、org.qii.weiciyuan.dao.URLHelper.APP_KEY和org.qii.weiciyuan.dao.URLHelper.DIRECT_URL分别对应API地址、AppKey和授权回调页面，所以其实到这儿还没完，你需要保证你的授权回调页面也正确，在 http://<span class="keyword">open</span>.weibo.com/apps/[你的app <span class="keyword">key</span>]/info/advanced 页面的OAuth2<span class="number">.0</span>授权设置里面的授权回调页填写 https://api.weibo.com/oauth2/<span class="keyword">default</span>.html，保存。此时就大功告成！将.apk安装包拷进手机安装即可。
-
-    同理，这个适用于将四次元的尾巴修改为任意机型的尾巴。你可以在网上搜已经公开了的机型的app <span class="keyword">key</span>和app secret，比如爱疯的。接下来，嗯，屌丝就可以逆袭了。。O__O<span class="string">"…
-
-    附：基于四次元二次开发的简笔画尾巴新浪微博安卓客户端的  [下载](http://blog.wangwenfeng.com/wp-content/uploads/2013/02/jianbihua.rar)</span></span>
-</code></pre>
       
     </div>
     <footer>
