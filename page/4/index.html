@@ -110,6 +110,79 @@
   <div class="post-content">
     <header>
       
+      <time datetime="2012-07-20T10:28:19.000Z"><a href="/2012/07/20/-e6-b5-8f-e8-a7-88-e5-99-a8-e5-88-a4-e6-96-ad-e4-bb-a4-e4-ba-ba-e5-a4-b4-e7-96-bc-e7-ba-a0-e7-bb-93-e7-9a-84-e6-b5-8f-e8-a7-88-e5-99-a8-e5-85-bc-e5-ae-b9-e9-97-ae-e9-a2-98/">周五, 7月 20 2012, 6:28:19 晚上</a></time>
+
+  
+    <h1 class="title"><a href="/2012/07/20/-e6-b5-8f-e8-a7-88-e5-99-a8-e5-88-a4-e6-96-ad-e4-bb-a4-e4-ba-ba-e5-a4-b4-e7-96-bc-e7-ba-a0-e7-bb-93-e7-9a-84-e6-b5-8f-e8-a7-88-e5-99-a8-e5-85-bc-e5-ae-b9-e9-97-ae-e9-a2-98/">浏览器判断 - 令人头疼纠结的浏览器兼容问题</a></h1>
+  
+
+
+  
+  <div class="categories">
+  	<i class="fa fa-folder-open"></i>
+    <a href="/categories/亘古不变学习些事/">亘古不变学习些事</a>
+  </div>
+
+
+  
+  <div class="tags">
+  	<i class="fa fa-tag"></i>
+    <a href="/tags/javascript/">javascript</a>
+  </div>
+
+<div class="clear"></div>
+      
+    </header>
+    <div class="entry">
+      
+        <p>今天在人人上面看到华中科技大学思存工作室推出了一个2012年新生专题，一打开网页，在页首就出现个橙色的亮条，提示我“您正在使用IE6或IE7内核的浏览器，为了您更高的浏览体验，推荐您使用chrome/FireFox/Opara/IE8/IE9等浏览器来浏览本网站！”原来我用的是搜狗浏览器兼容模式，切换到高速模式后，亮条消失。IE内核的浏览器越来越不给力，尤其是IE6和IE7，IE8和IE9稍微好点但也越来越力不从心了，于是结合前几天处理自己博客浏览器兼容时遇到的问题，想到模仿这个用javascript写一个浏览器判断，也好用在自己的博客上，提示那些执着于IE6/7的童鞋们该升级浏览器啦~</p>
+<p>其实就是个简单的判断过程，判断浏览器和浏览器的版本，如果browser == “Microsoft Internet Explorer” &amp;&amp; trim_Version == “MSIE7.0”) || (browser == “Microsoft Internet Explorer” &amp;&amp; trim_Version == “MSIE6.0”，返回提示框，否则不提示。然后代码如下：</p>
+<p>$(document).ready(function () {<br>//浏览器判断<br>var browser = navigator.appName;<br>var b_version = navigator.appVersion;<br>var version = b_version.split(“;”);<br>if (version[1] != undefined) {<br>var trim_Version = version[1].replace(/[ ]/g, “”);<br>if ((browser == “Microsoft Internet Explorer” &amp;&amp; trim_Version == “MSIE7.0”) || (browser == “Microsoft Internet Explorer” &amp;&amp; trim_Version == “MSIE6.0”)) {<br>$(“body”).append($(‘&lt;div style=”height: 30px;background: #FFD42A;top:0;line-height:30px;”&gt;&lt;div style=”width:900px;”&gt;您正在使用IE6或IE7内核的浏览器，为了您更高的浏览体验，推荐您使用chrome/FireFox/Opara/IE8/IE9等浏览器来浏览本网站！&lt;span style=”cursor: pointer; margin-left: 80px; display: inline-block;” onclick=”$(this).parent().parent().fadeOut(500)”&gt;X&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;’));<br>}<br>}</p>
+<p>将上面的代码保存为.js文件，注意要用UTF-8编码保存，我下午是用记事本直接编辑的，记事本默认是ANSI编码，然后导致上传到网站始终不能正确显示，后来查找好半天才发现是编码问题，但如果是用dreamweaver之类的软件编辑应该就不会出现编码问题。然后在网页的head标签内或者body标签内引用&lt;script src=”<em>**</em>.js” type=”text/javascript”&gt;&lt;/script&gt;即可。可能还需要用css控制一下样式什么的……</p>
+<p>没想到写的第一篇学习类文章是写浏览器的，囧。。比较简单，但很实用，可以把代码封装起来以后直接调用，呵呵~</p>
+
+      
+    </div>
+    <footer>
+      
+        <div class="alignleft">
+            <a href="/2012/07/20/-e6-b5-8f-e8-a7-88-e5-99-a8-e5-88-a4-e6-96-ad-e4-bb-a4-e4-ba-ba-e5-a4-b4-e7-96-bc-e7-ba-a0-e7-bb-93-e7-9a-84-e6-b5-8f-e8-a7-88-e5-99-a8-e5-85-bc-e5-ae-b9-e9-97-ae-e9-a2-98/#more" class="more-link"><i class="fa fa-chevron-right"></i>Read More</a>
+        </div>
+        
+        
+          <div class="alignright"> 
+            <a href="http://www.wangwenfeng.com/2012/07/20/-e6-b5-8f-e8-a7-88-e5-99-a8-e5-88-a4-e6-96-ad-e4-bb-a4-e4-ba-ba-e5-a4-b4-e7-96-bc-e7-ba-a0-e7-bb-93-e7-9a-84-e6-b5-8f-e8-a7-88-e5-99-a8-e5-85-bc-e5-ae-b9-e9-97-ae-e9-a2-98/#comment" class="comment-link">
+              <i class="fa fa-comments"></i><span class="ds-thread-count" data-thread-key="/2012/07/20/-e6-b5-8f-e8-a7-88-e5-99-a8-e5-88-a4-e6-96-ad-e4-bb-a4-e4-ba-ba-e5-a4-b4-e7-96-bc-e7-ba-a0-e7-bb-93-e7-9a-84-e6-b5-8f-e8-a7-88-e5-99-a8-e5-85-bc-e5-ae-b9-e9-97-ae-e9-a2-98/">&nbsp;
+              </span>
+            </a>
+          </div>
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
       <time datetime="2012-07-19T02:10:03.000Z"><a href="/2012/07/19/-e7-99-be-e6-97-a0-e8-81-8a-e8-b5-96-e7-9a-84-e6-97-a5-e5-ad-90/">周四, 7月 19 2012, 10:10:03 上午</a></time>
 
   
