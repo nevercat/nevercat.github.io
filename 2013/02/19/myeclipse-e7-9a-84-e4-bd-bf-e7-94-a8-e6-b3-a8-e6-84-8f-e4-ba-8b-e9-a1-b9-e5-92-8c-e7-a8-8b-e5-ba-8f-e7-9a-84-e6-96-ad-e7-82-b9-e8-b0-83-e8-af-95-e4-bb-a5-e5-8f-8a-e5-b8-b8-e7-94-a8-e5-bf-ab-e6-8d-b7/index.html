@@ -1,0 +1,254 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>MyEclipse的使用注意事项和程序的断点调试以及常用快捷键 | NEVERCAT</title>
+  <meta name="author" content="NEVERCAT">
+  
+  <meta name="description" content="简笔画 而我开始相信，奇迹正在敲门。">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="MyEclipse的使用注意事项和程序的断点调试以及常用快捷键"/>
+  <meta property="og:site_name" content="NEVERCAT"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="NEVERCAT" type="application/atom+xml">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" type="text/css">
+<link rel="stylesheet" href="/css/style.css" type="text/css">
+
+  <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-368771XX-X']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+
+<body>
+  <header id="header" class='normal_mode'>
+    <nav id="main-nav">
+  <ul class='container'>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="/about">About</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+  </header>
+  <div id="content" class="container">
+    <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+      <time datetime="2013-02-19T09:14:32.000Z"><a href="/2013/02/19/myeclipse-e7-9a-84-e4-bd-bf-e7-94-a8-e6-b3-a8-e6-84-8f-e4-ba-8b-e9-a1-b9-e5-92-8c-e7-a8-8b-e5-ba-8f-e7-9a-84-e6-96-ad-e7-82-b9-e8-b0-83-e8-af-95-e4-bb-a5-e5-8f-8a-e5-b8-b8-e7-94-a8-e5-bf-ab-e6-8d-b7/">周二, 2月 19 2013, 5:14:32 下午</a></time>
+
+  
+    <h1 class="title">MyEclipse的使用注意事项和程序的断点调试以及常用快捷键</h1>
+  
+
+
+  
+  <div class="categories">
+  	<i class="fa fa-folder-open"></i>
+    <a href="/categories/亘古不变学习些事/">亘古不变学习些事</a>
+  </div>
+
+
+  
+  <div class="tags">
+  	<i class="fa fa-tag"></i>
+    <a href="/tags/java/">java</a>
+  </div>
+
+<div class="clear"></div>
+      
+    </header>
+    <div class="entry">
+      
+        <pre><code>   放寒假之前网络中心的许可老师给我布置了个任务，寒假回去了解下“百度知道”的业务模式，开学后给我分配一台服务器用jsp的hibernate框架部署一个开源的问答系统（问答系统？想起了华科冰岩的iknow，不过iknow貌似是用php写的）。可惜寒假玩得太疯了基本把这事给抛在脑后了，现在数着日子差不多只有一个星期就开学了吧，开始准备收心了！好长时间手生没敲java代码，于是首先复习了一下，总结了一下自己平时使用Myeclipse进行开发时积累起来的一些技巧，主要是一些注意事项、个人用得最多的快捷键和程序的调试什么的，不过大神们请忽略这篇文章。。- -！
+
+   <span class="number">1</span>、创建Workspace的名字的时候千万不要使用中文或者带空格。否则你之后运行程序时错都不知道自己错在哪儿了，虽然之后也可以处理，但比较麻烦，要养成一个好的习惯。
+
+   <span class="number">2</span>、创建Project的时候，指定的java运行环境版本一定要和编译器的版本相同或者更高，否则就会报错。（修改jre的方法：一是可以在创建Project的时候直接配置是使用默认的还是自己指定的jdk[一般是指定jdk，包含了开发环境和运行环境jre]；二是可以在工程名上右键——<span class="keyword">Properties</span>[快捷键Alt+<span class="keyword">Enter</span>]——Java Build <span class="keyword">Path</span>——Libraries。修改java编译器的方法：工程名上右键——<span class="keyword">Properties</span>[快捷键Alt+<span class="keyword">Enter</span>]——Java Compiler）
+
+   <span class="number">3</span>、创建class的时候一定要有包名，无论是写简单的程序还是复杂的工程，习惯很重要！
+
+   <span class="number">4</span>、必须先打断点才能进入debug模式。
+
+   <span class="number">5</span>、debug时的快捷键：
+</code></pre><p>F5：跳入 step into<br>F6：跳过 step over<br>F7：跳出 step return<br>drop to frame：跳到当前方法的第一行（一般是在不小心按F6按快了超过了你想看的那一行时用）<br>resume：跳到下一个断点（如果没有下一个，则运行完整个程序。如果当前方法有几百几千几万行，一行一行的F6太慢想直接跳到下一个方法的话可在下一个方法开头再打一个断点，然后resume）<br>watch：观察变量或表达式的值（选中要看的变量或者表达式然后右键）</p>
+<pre><code>   6、断点注意事项：
+</code></pre><p>(1)断点调试完成后，一定要在breakpoints视图中清除所有断点！<br>(2)断点调试完成后，一定要记得结束运行断点的JVM，否则你每调试一次开一个JVM最后机子卡死了没保存代码都不知道是怎么死的！</p>
+<pre><code>   7、常用快捷键：
+</code></pre><p>内容提示：Alt+/ （老版本的MyEclipse默认内容提示的快捷键是Alt+Space，因为常常和输入法的切换快捷键冲突需要手动修改，新版的MyEclipse已默认为Alt+/。修改快捷键方法：Window——Preferences，然后输入keys即可进入设置快捷键界面）<br>快速修复：Ctrl+1 （当出现错误时，想都不用想，首先先按一下Ctrl+1再说，让其自动修复一下，若修复不了再自己找原因修复）<br>导包：Ctrl+Shift+O （当知道错误原因是没导入相应的包时可直接按这个，免得Ctrl+1快速修复需要按多次）<br>格式化代码块：Ctrl+Shift+F （必须要记住的快捷键！）<br>向前向后：Alt+左右方向键 （在调试或者查看源代码的时候，到处跳想返回或者前进跟踪源代码的时候很有效！）<br>添加注释：Ctrl+Shift+/<br>除去注释：Ctrl+Shift+\ （这2个就不用说了吧，记住要先选中需要注释的代码）<br>查看方法说明：F2 （鼠标移到方法名上出现说明然后Press “F2” for focus查看全部的说明）<br>重置透视图 （当窗口版块拖乱了时候想要恢复默认时，Window——Reset Perspective，确定即可。记住不要点到了Save Perspective As…）<br>更改为大写：Ctrl+Shift+X （例如常量需要大写，选中按快捷键即可）<br>更改为小写：Ctrl+Shift+Y<br>复制行：Ctrl+Alt+向下键 （注意有些不能用。不需要选中。默认复制光标所在行）<br>交换两行代码顺序：Alt+上下方向键<br>查看类的继承关系：Ctrl+T （鼠标放在类上按快捷键就会出现该类的父类和子类继承树）<br>查看源代码：(1)Ctrl+点击 （按住ctrl，鼠标移到对象上变成收到形状然后点击。有时要手动导入源代码，例如jdk里面的src.zip）<br>(2)Ctrl+Shift+T （当没写类的时候，然后输入想看类的源代码名称搜索）<br>查看所有快捷键：Ctrl+Shift+L （列出MyEclipse中所有的快捷键，但个人觉得掌握以上提要的常用的即可，太多了也记不住）</p>
+
+      
+    </div>
+    <footer>
+      
+          
+<!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <span class="jiathis_txt">分享到：</span>
+  <a class="jiathis_button_weixin">微信</a>
+  <a class="jiathis_button_tsina">新浪微博</a>
+  <a class="jiathis_button_renren">人人网</a>
+  <a class="jiathis_button_qzone">QQ空间</a>
+  <a class="jiathis_button_douban">豆瓣</a>
+  <a class="jiathis_button_pocket">Pocket</a>
+  <a href="http://www.jiathis.com/share?uid=901656" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js?uid=901656" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+          <div class="clearfix"></div>
+          <nav id="pagination">
+  
+    <a href="/2013/02/19/java-e5-85-ad-e5-a4-a7-e5-bf-85-e9-a1-bb-e7-90-86-e8-a7-a3-e7-9a-84-e9-97-ae-e9-a2-98-ef-bc-88-e6-9d-a5-e8-87-aa-e7-bd-91-e7-bb-9c-e5-b0-91-e8-ae-b8-e6-9c-89-e8-af-af-ef-bc-89/" class="alignleft prev"><i class="fa fa-long-arrow-left"></i>Next</a>
+  
+  
+    <a href="/2013/02/03/-e5-9b-9b-e6-ac-a1-e5-85-83-e7-9a-84-e4-ba-8c-e6-ac-a1-e5-bc-80-e5-8f-91-e4-bf-ae-e6-94-b9-e5-9b-9b-e6-ac-a1-e5-85-83-e5-b0-be-e5-b7-b4/" class="alignright next">Prev<i class="fa fa-long-arrow-right"></i></a>
+  
+  <div class="clearfix"></div>
+</nav>
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+  <h1 class="title">留言</h1>
+
+  
+      <!-- Duoshuo Comment BEGIN -->
+<div class="ds-thread" data-thread-key="/2013/02/19/myeclipse-e7-9a-84-e4-bd-bf-e7-94-a8-e6-b3-a8-e6-84-8f-e4-ba-8b-e9-a1-b9-e5-92-8c-e7-a8-8b-e5-ba-8f-e7-9a-84-e6-96-ad-e7-82-b9-e8-b0-83-e8-af-95-e4-bb-a5-e5-8f-8a-e5-b8-b8-e7-94-a8-e5-bf-ab-e6-8d-b7/"></div>
+<!-- Duoshuo Comment END -->
+  
+</section>
+
+
+
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div>
+  
+  &copy; 2015 NEVERCAT
+  
+</div>
+Powered by <a href="http://zespia.tw/hexo/" title="Hexo" target="_blank" rel="external">Hexo</a> and <a href="http://pages.github.com/" title="GitHub Pages" target="_blank" rel="external">GitHub Pages</a>
+
+<div class="clearfix"></div></footer>
+  
+<script src="/js/jquery.imagesloaded.min.js" type="text/javascript"></script>
+<script src="/js/gallery.js" type="text/javascript"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js" type="text/javascript"></script>
+
+
+
+
+
+    <script type="text/javascript">
+        (function(){
+
+            $(window).scroll(function(){
+
+                var scrollTop = $(window).scrollTop();
+                if ( scrollTop >200 ){
+                    $("#main-nav").removeClass('normal_mode').addClass('top_mode');
+                } else{
+                    $("#main-nav").removeClass('top_mode').addClass('normal_mode');
+                }
+
+            });
+
+        })();
+    </script>
+
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript">
+  (function($){
+    $('.fancybox').fancybox({
+      'titlePosition': 'inside'
+    });
+  })(jQuery);
+  </script>
+
+
+
+    
+    <script type="text/javascript">
+      var duoshuoQuery = {short_name:"your_id"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = 'http://static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0] 
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+
+
+<script type="text/javascript">
+  
+  $(function(){
+
+    $('.title').hover(
+      function() {      
+        $(this).stop().animate(
+          {'marginLeft': '10px'}, 200
+        );   
+      }, 
+      function() {       
+        $(this).stop().animate({'marginLeft': '0px'}, 200);      
+      
+    });   
+
+  });
+
+</script>
+
+
+</body>
+</html>
