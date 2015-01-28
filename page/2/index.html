@@ -135,157 +135,9 @@
     </header>
     <div class="entry">
       
-        <pre><code>    「话说自那之后，鸟飞兔走，瞬息光阴，暑来寒往，不觉大四」 咳咳，十万个冷笑话乱入，画风有点不对啊。
-
-    大四了，收拾好心情准备滚蛋吧！
-</code></pre><p>——莫名其妙的心情</p>
-<pre><code>    暑假的时候准备写个叫做“图遇”的Android应用，定位于以图书借阅为基础的校园社交app，主要面向高校大学生。我想把它做成一个不仅能够帮助大学生查阅图书借阅资料（包括图书简介、借阅次数、推荐排名、相关图书介绍），还可以将自己借阅的图书发布到应用中，与好友分享；除此之外，借阅过、正在借或者对此图书感兴趣的同学可以在应用中讨论图书内容、分享读后感；甚至通过同一本或同一类书结识校内同学，扩展交际圈，并可以向这些同学发送私信，方便同学间即时便捷的联系和交流；还可以查看到其他人的图书借阅情况，并添加入为个人想要借阅书籍行列，制订属于自己的学霸计划；绑定第三方应用（新浪微博，人人，QQ等）并分享到第三方应用。与其它查询应用不同的是，这个app不需要用户手动添加图书信息，用户只需要输入自己学校图书信息管理系统账号密码后，系统就会自动添加，方便快捷，免除手动添加信息的繁琐；并且轻松找到志同道合同学。
-
-    然后，就没有然后了。这个项目到目前为止已经难产。
-
-    原因就不说了吧。
-
-    但是我还是写了一个雏形，里面大量用到了现在比较流行的卡片的设计。记得之前在<span class="number">36</span>Kr上看过一篇文章，[卡片的设计正像病毒一样席卷Google](<span class="keyword">http</span>://www<span class="number">.36</span>kr.com/p/<span class="number">203357.</span>html <span class="string">"卡片的设计正像病毒一样席卷Google"</span>)，然后我在这个流产的项目也用到了这种设计，实现方法很简单，其实就是layout的布局。
-
-    下面以图书当前借阅为例，我们创建一个booklist_fragment.xml。
-
-    创建一个LinearLayout的布局，在里面写一个ListView。详细代码如下。
-</code></pre><p><pre class="lang:default decode:true" title="booklist_fragment.xml">&lt;?xml version=”1.0” encoding=”utf-8”?&gt;<br>&lt;LinearLayout xmlns:android=”<a href="http://schemas.android.com/apk/res/android" target="_blank" rel="external">http://schemas.android.com/apk/res/android</a>“<br>    xmlns:ccnulib=”<a href="http://schemas.android.com/apk/res/com.wangwenfeng.ccnulib" target="_blank" rel="external">http://schemas.android.com/apk/res/com.wangwenfeng.ccnulib</a>“<br>    android:layout_width=”match_parent”<br>    android:layout_height=”match_parent”<br>    android:background=”@drawable/main_bg”<br>    android:clickable=”true”<br>    android:orientation=”vertical” &gt;</pre></p>
-<pre><code>&amp;lt;ListView
-    android:<span class="variable">id=</span><span class="string">"@+id/booklist_fragment"</span>
-    android:<span class="variable">layout_width=</span><span class="string">"match_parent"</span>
-    android:<span class="variable">layout_height=</span><span class="string">"match_parent"</span>
-    android:<span class="variable">divider=</span><span class="string">"@android:color/transparent"</span>
-    android:<span class="variable">dividerHeight=</span><span class="string">"5dip"</span>
-    android:<span class="variable">drawSelectorOnTop=</span><span class="string">"true"</span>
-    android:<span class="variable">footerDividersEnabled=</span><span class="string">"true"</span>
-    android:<span class="variable">headerDividersEnabled=</span><span class="string">"true"</span>
-    android:<span class="variable">paddingLeft=</span><span class="string">"5dip"</span>
-    android:<span class="variable">paddingRight=</span><span class="string">"5dip"</span>
-    android:<span class="variable">scrollbarStyle=</span><span class="string">"outsideOverlay"</span>
-    android:<span class="variable">scrollingCache=</span><span class="string">"true"</span>
-    android:<span class="variable">smoothScrollbar=</span><span class="string">"true"</span> &amp;gt;
-&amp;lt;/ListView&amp;gt;
-</code></pre><p>&lt;/LinearLayout&gt;<br>效果如下。</p>
-<p><a href="http://blog.wangwenfeng.com/wp-content/uploads/2013/09/1.png" target="_blank" rel="external"><img src="http://blog.wangwenfeng.com/wp-content/uploads/2013/09/1.png" alt="1"></a></p>
-<p>然后创建booklist.xml。</p>
-<p><pre class="lang:default decode:true" title="booklist.xml">&lt;?xml version=”1.0” encoding=”utf-8”?&gt;<br>&lt;RelativeLayout xmlns:android=”<a href="http://schemas.android.com/apk/res/android" target="_blank" rel="external">http://schemas.android.com/apk/res/android</a>“<br>    android:layout_width=”match_parent”<br>    android:layout_height=”wrap_content”<br>    android:background=”@drawable/bg_listitem_shot”<br>    android:padding=”8dip” &gt;</pre></p>
-<pre><code>&amp;lt;TextView
-    android:<span class="variable">id=</span><span class="string">"@+id/bookTitleTV"</span>
-    android:<span class="variable">layout_width=</span><span class="string">"wrap_content"</span>
-    android:<span class="variable">layout_height=</span><span class="string">"wrap_content"</span>
-    android:<span class="variable">layout_alignParentLeft=</span><span class="string">"true"</span>
-    android:<span class="variable">layout_alignParentTop=</span><span class="string">"true"</span>
-    android:<span class="variable">textAppearance=</span><span class="string">"?android:attr/textAppearanceLarge"</span>
-    android:<span class="variable">textColor=</span><span class="string">"#3F83AA"</span> /&amp;gt;
-
-&amp;lt;TextView
-    android:<span class="variable">id=</span><span class="string">"@+id/barcode"</span>
-    android:<span class="variable">layout_width=</span><span class="string">"wrap_content"</span>
-    android:<span class="variable">layout_height=</span><span class="string">"wrap_content"</span>
-    android:<span class="variable">layout_alignLeft=</span><span class="string">"@id/bookTitleTV"</span>
-    android:<span class="variable">layout_below=</span><span class="string">"@id/bookTitleTV"</span>
-    android:<span class="variable">text=</span><span class="string">"@string/barcode"</span>
-    android:<span class="variable">textColor=</span><span class="string">"#7E7E7E"</span> /&amp;gt;
-
-&amp;lt;TextView
-    android:<span class="variable">id=</span><span class="string">"@+id/barcodeTV"</span>
-    android:<span class="variable">layout_width=</span><span class="string">"wrap_content"</span>
-    android:<span class="variable">layout_height=</span><span class="string">"wrap_content"</span>
-    android:<span class="variable">layout_below=</span><span class="string">"@id/bookTitleTV"</span>
-    android:<span class="variable">layout_marginLeft=</span><span class="string">"30dp"</span>
-    android:<span class="variable">layout_toRightOf=</span><span class="string">"@id/barcode"</span>
-    android:<span class="variable">textColor=</span><span class="string">"#7E7E7E"</span> /&amp;gt;
-
-&amp;lt;TextView
-    android:<span class="variable">id=</span><span class="string">"@+id/borrowedDate"</span>
-    android:<span class="variable">layout_width=</span><span class="string">"wrap_content"</span>
-    android:<span class="variable">layout_height=</span><span class="string">"wrap_content"</span>
-    android:<span class="variable">layout_alignLeft=</span><span class="string">"@id/barcode"</span>
-    android:<span class="variable">layout_below=</span><span class="string">"@id/barcodeTV"</span>
-    android:<span class="variable">text=</span><span class="string">"@string/borrowedDate"</span>
-    android:<span class="variable">textColor=</span><span class="string">"#7E7E7E"</span> /&amp;gt;
-
-&amp;lt;TextView
-    android:<span class="variable">id=</span><span class="string">"@+id/borrowedDateTV"</span>
-    android:<span class="variable">layout_width=</span><span class="string">"wrap_content"</span>
-    android:<span class="variable">layout_height=</span><span class="string">"wrap_content"</span>
-    android:<span class="variable">layout_alignLeft=</span><span class="string">"@id/barcodeTV"</span>
-    android:<span class="variable">layout_below=</span><span class="string">"@id/barcodeTV"</span>
-    android:<span class="variable">textColor=</span><span class="string">"#7E7E7E"</span> /&amp;gt;
-
-&amp;lt;TextView
-    android:<span class="variable">id=</span><span class="string">"@+id/paybackDate"</span>
-    android:<span class="variable">layout_width=</span><span class="string">"wrap_content"</span>
-    android:<span class="variable">layout_height=</span><span class="string">"wrap_content"</span>
-    android:<span class="variable">layout_alignLeft=</span><span class="string">"@id/borrowedDate"</span>
-    android:<span class="variable">layout_below=</span><span class="string">"@id/borrowedDateTV"</span>
-    android:<span class="variable">text=</span><span class="string">"@string/paybackDate"</span>
-    android:<span class="variable">textColor=</span><span class="string">"#7E7E7E"</span> /&amp;gt;
-
-&amp;lt;TextView
-    android:<span class="variable">id=</span><span class="string">"@+id/paybackDateTV"</span>
-    android:<span class="variable">layout_width=</span><span class="string">"wrap_content"</span>
-    android:<span class="variable">layout_height=</span><span class="string">"wrap_content"</span>
-    android:<span class="variable">layout_alignLeft=</span><span class="string">"@id/borrowedDateTV"</span>
-    android:<span class="variable">layout_below=</span><span class="string">"@id/borrowedDateTV"</span>
-    android:<span class="variable">textColor=</span><span class="string">"#7E7E7E"</span> /&amp;gt;
-
-&amp;lt;TextView
-    android:<span class="variable">id=</span><span class="string">"@+id/renewAmount"</span>
-    android:<span class="variable">layout_width=</span><span class="string">"wrap_content"</span>
-    android:<span class="variable">layout_height=</span><span class="string">"wrap_content"</span>
-    android:<span class="variable">layout_alignLeft=</span><span class="string">"@id/paybackDate"</span>
-    android:<span class="variable">layout_below=</span><span class="string">"@id/paybackDateTV"</span>
-    android:<span class="variable">text=</span><span class="string">"@string/renewAmount"</span>
-    android:<span class="variable">textColor=</span><span class="string">"#7E7E7E"</span> /&amp;gt;
-
-&amp;lt;TextView
-    android:<span class="variable">id=</span><span class="string">"@+id/renewAmountTV"</span>
-    android:<span class="variable">layout_width=</span><span class="string">"wrap_content"</span>
-    android:<span class="variable">layout_height=</span><span class="string">"wrap_content"</span>
-    android:<span class="variable">layout_alignLeft=</span><span class="string">"@id/paybackDateTV"</span>
-    android:<span class="variable">layout_below=</span><span class="string">"@id/paybackDateTV"</span>
-    android:<span class="variable">textColor=</span><span class="string">"#7E7E7E"</span> /&amp;gt;
-
-&amp;lt;TextView
-    android:<span class="variable">id=</span><span class="string">"@+id/collectionAddress"</span>
-    android:<span class="variable">layout_width=</span><span class="string">"wrap_content"</span>
-    android:<span class="variable">layout_height=</span><span class="string">"wrap_content"</span>
-    android:<span class="variable">layout_alignLeft=</span><span class="string">"@id/renewAmount"</span>
-    android:<span class="variable">layout_below=</span><span class="string">"@id/renewAmountTV"</span>
-    android:<span class="variable">text=</span><span class="string">"@string/collectionAddress"</span>
-    android:<span class="variable">textColor=</span><span class="string">"#7E7E7E"</span> /&amp;gt;
-
-&amp;lt;TextView
-    android:<span class="variable">id=</span><span class="string">"@+id/collectionAddressTV"</span>
-    android:<span class="variable">layout_width=</span><span class="string">"wrap_content"</span>
-    android:<span class="variable">layout_height=</span><span class="string">"wrap_content"</span>
-    android:<span class="variable">layout_alignLeft=</span><span class="string">"@id/renewAmountTV"</span>
-    android:<span class="variable">layout_below=</span><span class="string">"@id/renewAmountTV"</span>
-    android:<span class="variable">textColor=</span><span class="string">"#7E7E7E"</span> /&amp;gt;
-
-&amp;lt;TextView
-    android:<span class="variable">id=</span><span class="string">"@+id/attachment"</span>
-    android:<span class="variable">layout_width=</span><span class="string">"wrap_content"</span>
-    android:<span class="variable">layout_height=</span><span class="string">"wrap_content"</span>
-    android:<span class="variable">layout_alignLeft=</span><span class="string">"@id/collectionAddress"</span>
-    android:<span class="variable">layout_below=</span><span class="string">"@id/collectionAddressTV"</span>
-    android:<span class="variable">text=</span><span class="string">"@string/attachment"</span>
-    android:<span class="variable">textColor=</span><span class="string">"#7E7E7E"</span> /&amp;gt;
-
-&amp;lt;TextView
-    android:<span class="variable">id=</span><span class="string">"@+id/attachmentTV"</span>
-    android:<span class="variable">layout_width=</span><span class="string">"wrap_content"</span>
-    android:<span class="variable">layout_height=</span><span class="string">"wrap_content"</span>
-    android:<span class="variable">layout_alignLeft=</span><span class="string">"@id/collectionAddressTV"</span>
-    android:<span class="variable">layout_below=</span><span class="string">"@id/collectionAddressTV"</span>
-    android:<span class="variable">textColor=</span><span class="string">"#7E7E7E"</span> /&amp;gt;
-</code></pre><p>&lt;/RelativeLayout&gt;<br>效果如下。</p>
-<p><a href="http://blog.wangwenfeng.com/wp-content/uploads/2013/09/2.png" target="_blank" rel="external"><img src="http://blog.wangwenfeng.com/wp-content/uploads/2013/09/2.png" alt="2"></a></p>
-<p>最后效果如下。</p>
-<p><a href="http://blog.wangwenfeng.com/wp-content/uploads/2013/09/3.png" target="_blank" rel="external"><img src="http://blog.wangwenfeng.com/wp-content/uploads/2013/09/3.png" alt="3"></a></p>
-
+        <p>「话说自那之后，鸟飞兔走，瞬息光阴，暑来寒往，不觉大四」 咳咳，十万个冷笑话乱入，画风有点不对啊。</p>
+<p>大四了，收拾好心情准备滚蛋吧！</p>
+<p>——莫名其妙的心情<br>
       
     </div>
     <footer>
@@ -411,12 +263,7 @@
     </header>
     <div class="entry">
       
-        <pre><code>    今天《致我们终将逝去的青春》上映，据说评价很高，但我没去影院看，宅在窝里看Android开发。之前有看过小说，不过才刚开了个头就没看下去了，感觉就一普通的青春爱情小说，不是很感冒。不过电影版的我想什么时候有时间的话还是要去看一下比较好。青春就是用来怀念的。
-
-    一晃眼真的发现自己的青春已经快要逝去了，还有一年就大学毕业，不考研的我也就要参加工作了。最近由于某些事情的刺激突然想在大学的最后一年中做点什么，初步把想法跟团队的人说了下，创意竟然得到了一致的认可，初步就是做一个基于Android的校园社交应用，不过呢，当然不是这么简单，具体创意在哪儿就要等到我们的app发布那天啦，暑假基本就要跟团队呆在学校了，本来还想去学驾照的，不过想想还是算了，以后有的是机会吧。
-
-    青春是一场远行，回不去了。青春是一场相逢，忘不掉了，青春是一场伤痛，来不及了。
-</code></pre>
+        <p>今天《致我们终将逝去的青春》上映，据说评价很高，但我没去影院看，宅在窝里看Android开发。之前有看过小说，不过才刚开了个头就没看下去了，感觉就一普通的青春爱情小说，不是很感冒。不过电影版的我想什么时候有时间的话还是要去看一下比较好。青春就是用来怀念的。<br>
       
     </div>
     <footer>
@@ -484,79 +331,7 @@
     </header>
     <div class="entry">
       
-        <p>Hibernate是一个开放源代码的对象关系映射框架，它对JDBC进行了非常轻量级的对象封装，使得Java程序员可以随心所欲的使用对象编程思维来操纵数据库。 Hibernate可以应用在任何使用JDBC的场合，既可以在Java的客户端程序使用，也可以在Servlet/JSP的Web应用中使用，最具革命意义的是，Hibernate可以在应用EJB的J2EE架构中取代CMP，完成数据持久化的重任。</p>
-<p>第一段摘自百度百科。已经解释得很清楚了，说到底就是一个对象（Object）关系（Relational）映射（Mapping）框架（ORM框架），是一种为了解决面向对象与关系数据库存在的互不匹配的现象的技术，再说得简单点就是把Object映射成为Relationship相关的SQL语句，把SQL语句从数据库中拿来以后再组装成一个对象，这样就不用你去拼SQL语句了，完成配置后hibernate会自动帮你生成SQL语句并执行数据库相关操作。</p>
-<p>主要就是完成配置文件hibernate.cfg.xml。</p>
-<p><pre title="hibernate.cfg.xml" class="lang:default decode:true">&lt;?xml version=’1.0’ encoding=’utf-8’?&gt;<br>&lt;!DOCTYPE hibernate-configuration PUBLIC<br>        “-//Hibernate/Hibernate Configuration DTD 3.0//EN”<br>        “<a href="http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd&quot;&amp;gt" target="_blank" rel="external">http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd&quot;&amp;gt</a>;</pre></p>
-<p>&lt;hibernate-configuration&gt;</p>
-<pre><code>&amp;lt;session-factory&amp;gt;
-
-    &amp;lt;!<span class="comment">-- Database connection settings --&amp;gt;</span>
-    &amp;lt;<span class="keyword">property</span> name=<span class="string">"connection.driver_class"</span>&amp;gt;org.hsqldb.jdbcDriver&amp;lt;/<span class="keyword">property</span>&amp;gt;
-    &amp;lt;<span class="keyword">property</span> name=<span class="string">"connection.url"</span>&amp;gt;jdbc:hsqldb:hsql://localhost&amp;lt;/<span class="keyword">property</span>&amp;gt;
-    &amp;lt;<span class="keyword">property</span> name=<span class="string">"connection.username"</span>&amp;gt;sa&amp;lt;/<span class="keyword">property</span>&amp;gt;
-    &amp;lt;<span class="keyword">property</span> name=<span class="string">"connection.password"</span>&amp;gt;&amp;lt;/<span class="keyword">property</span>&amp;gt;
-
-    &amp;lt;!<span class="comment">-- JDBC connection pool (use the built-in) --&amp;gt;</span>
-    &amp;lt;<span class="keyword">property</span> name=<span class="string">"connection.pool_size"</span>&amp;gt;<span class="number">1</span>&amp;lt;/<span class="keyword">property</span>&amp;gt;
-
-    &amp;lt;!<span class="comment">-- SQL dialect --&amp;gt;</span>
-    &amp;lt;<span class="keyword">property</span> name=<span class="string">"dialect"</span>&amp;gt;org.hibernate.dialect.HSQLDialect&amp;lt;/<span class="keyword">property</span>&amp;gt;
-
-    &amp;lt;!<span class="comment">-- Enable Hibernate's automatic session context management --&amp;gt;</span>
-    &amp;lt;<span class="keyword">property</span> name=<span class="string">"current_session_context_class"</span>&amp;gt;thread&amp;lt;/<span class="keyword">property</span>&amp;gt;
-
-    &amp;lt;!<span class="comment">-- Disable the second-level cache  --&amp;gt;</span>
-    &amp;lt;<span class="keyword">property</span> name=<span class="string">"cache.provider_class"</span>&amp;gt;org.hibernate.cache.NoCacheProvider&amp;lt;/<span class="keyword">property</span>&amp;gt;
-
-    &amp;lt;!<span class="comment">-- Echo all executed SQL to stdout --&amp;gt;</span>
-    &amp;lt;<span class="keyword">property</span> name=<span class="string">"show_sql"</span>&amp;gt;true&amp;lt;/<span class="keyword">property</span>&amp;gt;
-
-    &amp;lt;!<span class="comment">-- Drop and re-create the database schema on startup --&amp;gt;</span>
-    &amp;lt;<span class="keyword">property</span> name=<span class="string">"hbm2ddl.auto"</span>&amp;gt;update&amp;lt;/<span class="keyword">property</span>&amp;gt;
-
-    &amp;lt;mapping resource=<span class="string">"org/hibernate/tutorial/domain/Event.hbm.xml"</span>/&amp;gt;
-
-&amp;lt;/session-factory&amp;gt;
-</code></pre><p>&lt;/hibernate-configuration&gt;<br>&nbsp;</p>
-<pre><code>    其中，有部分需要根据需要进行修改，例如：
-</code></pre><p><pre title="Database connection settings" class="lang:default decode:true">&lt;!— Database connection settings —&gt;<br>        &lt;property name=”connection.driver_class”&gt;com.mysql.jdbc.Driver&lt;/property&gt;<br>        &lt;property name=”connection.url”&gt;jdbc:mysql://localhost/hibernate&lt;/property&gt;<br>        &lt;property name=”connection.username”&gt;root&lt;/property&gt;<br>        &lt;property name=”connection.password”&gt;root&lt;/property&gt;</pre><br>&nbsp;</p>
-<pre><code>    这儿是跟数据库连接的配置文件，以MySQL为例，把connection.driver_class里面修改成com.mysql.jdbc.Driver，把connection.url里面修改成jdbc:mysql:<span class="comment">//localhost/hibernate，然后我的MySQL数据库账号和密码均为root。</span>
-
-    然后是方言的配置。
-</code></pre><p><pre title="SQL dialect" class="lang:default decode:true">&lt;!— SQL dialect —&gt;<br>        &lt;property name=”dialect”&gt;org.hibernate.dialect.MySQLDialect&lt;/property&gt;</pre><br>&nbsp;</p>
-<pre><code>    修改成MySQL的方言。
-
-    然后将最后的映射指向自己的hbm<span class="built_in">.</span><span class="built_in">xml</span>文件路径。例如：
-</code></pre><p><pre title="mapping resource" class="lang:default decode:true">&lt;mapping resource=”com/wangwenfeng/hibernate/model/Student.hbm.xml”/&gt;</pre><br>&nbsp;</p>
-<pre><code>    接着在Student<span class="built_in">.</span>hbm<span class="built_in">.</span><span class="built_in">xml</span>中写与数据库字段对应的配置。例如：
-</code></pre><p><pre title="Student.hbm.xml" class="lang:default decode:true">&lt;?xml version=”1.0”?&gt;<br>&lt;!DOCTYPE hibernate-mapping PUBLIC<br>        “-//Hibernate/Hibernate Mapping DTD 3.0//EN”<br>        “<a href="http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd&quot;&amp;gt" target="_blank" rel="external">http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd&quot;&amp;gt</a>;</pre></p>
-<p>&lt;hibernate-mapping package=”com.wangwenfeng.hibernate.model”&gt;<br>    &lt;class name=”Student” table=”student”&gt;<br>        &lt;id name=”id”&gt;&lt;/id&gt;<br>        &lt;property name=”name”&gt;&lt;/property&gt;<br>        &lt;property name=”age”&gt;&lt;/property&gt;<br>    &lt;/class&gt;</p>
-<p>&lt;/hibernate-mapping&gt;<br>&nbsp;</p>
-<pre><code>    这样就配置完成了。
-
-    那么怎么使用呢，我们可以先写一个Student类。
-</code></pre><p><pre title="Student.java" class="lang:default decode:true">package com.wangwenfeng.hibernate.model;</pre></p>
-<p>public class Student {<br>    private int id;<br>    private String name;<br>    private int age;<br>    public int getId() {<br>        return id;<br>    }<br>    public void setId(int id) {<br>        this.id = id;<br>    }<br>    public String getName() {<br>        return name;<br>    }<br>    public void setName(String name) {<br>        this.name = name;<br>    }<br>    public int getAge() {<br>        return age;<br>    }<br>    public void setAge(int age) {<br>        this.age = age;<br>    }</p>
-<p>}<br>&nbsp;</p>
-<pre><code>    然后创建StudentTest类。
-</code></pre><p><pre title="StudentTest.java" class="lang:default decode:true">import org.hibernate.Session;<br>import org.hibernate.SessionFactory;<br>import org.hibernate.cfg.Configuration;</pre></p>
-<p>import com.wangwenfeng.hibernate.model.Student;</p>
-<p>public class StudentTest {<br>    public static void main(String[] args) {<br>        Student s = new Student();<br>        s.setId(1);<br>        s.setName(“s1”);<br>        s.setAge(1);</p>
-<pre><code>    Configuration cfg = <span class="keyword">new</span> Configuration();
-    SessionFactory <span class="keyword">sf</span> = cfg.configure().buildSessionFactory();
-    Session session = <span class="keyword">sf</span>.openSession();
-
-    session.beginTransaction();
-    session.save(<span class="keyword">s</span>);
-    session.getTransaction().commit();
-
-    session.<span class="keyword">close</span>();
-    <span class="keyword">sf</span>.<span class="keyword">close</span>();
-}
-</code></pre><p>}<br>&nbsp;</p>
-<pre><code>    这样就将<span class="variable">id=</span><span class="number">1</span>，<span class="variable">name=</span><span class="string">"s1"</span>，<span class="variable">age=</span><span class="number">1</span>插进了数据库。
-</code></pre>
+        <p>Hibernate是一个开放源代码的对象关系映射框架，它对JDBC进行了非常轻量级的对象封装，使得Java程序员可以随心所欲的使用对象编程思维来操纵数据库。 Hibernate可以应用在任何使用JDBC的场合，既可以在Java的客户端程序使用，也可以在Servlet/JSP的Web应用中使用，最具革命意义的是，Hibernate可以在应用EJB的J2EE架构中取代CMP，完成数据持久化的重任。<br>
       
     </div>
     <footer>
@@ -618,12 +393,7 @@
     </header>
     <div class="entry">
       
-        <pre><code>   在网络中心值班，今天真奇怪，就我一个人来了，偌大的屋子只有我陪伴着几台还是P4处理器+纯平CRT显示器的老爷机喝茶，艰难地阅读着一个开源的问答系统openephyra的源码，都快要睡着了。
-
-   开学还没几天就感觉这学期和其他任何一个学期都不一样了，周围的人儿都转身怒变学霸，是啊，都大三下了呵，离毕业也就一年半了，准备考研的天天都抱着厚厚的高数政治英语在图书馆啃，准备找工作的都忙着到处投简历准备先找找实习，准备出国的都在紧张地背着托福雅思，大学前两年的懵懂在此刻都消失不见了。
-
-   我的规划呢。
-</code></pre>
+        <p>在网络中心值班，今天真奇怪，就我一个人来了，偌大的屋子只有我陪伴着几台还是P4处理器+纯平CRT显示器的老爷机喝茶，艰难地阅读着一个开源的问答系统openephyra的源码，都快要睡着了。<br>
       
     </div>
     <footer>

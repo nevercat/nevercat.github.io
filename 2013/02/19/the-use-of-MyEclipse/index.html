@@ -99,18 +99,11 @@
     </header>
     <div class="entry">
       
-        <pre><code>   放寒假之前网络中心的许可老师给我布置了个任务，寒假回去了解下“百度知道”的业务模式，开学后给我分配一台服务器用jsp的hibernate框架部署一个开源的问答系统（问答系统？想起了华科冰岩的iknow，不过iknow貌似是用php写的）。可惜寒假玩得太疯了基本把这事给抛在脑后了，现在数着日子差不多只有一个星期就开学了吧，开始准备收心了！好长时间手生没敲java代码，于是首先复习了一下，总结了一下自己平时使用Myeclipse进行开发时积累起来的一些技巧，主要是一些注意事项、个人用得最多的快捷键和程序的调试什么的，不过大神们请忽略这篇文章。。- -！
-
-   <span class="number">1</span>、创建Workspace的名字的时候千万不要使用中文或者带空格。否则你之后运行程序时错都不知道自己错在哪儿了，虽然之后也可以处理，但比较麻烦，要养成一个好的习惯。
-
-   <span class="number">2</span>、创建Project的时候，指定的java运行环境版本一定要和编译器的版本相同或者更高，否则就会报错。（修改jre的方法：一是可以在创建Project的时候直接配置是使用默认的还是自己指定的jdk[一般是指定jdk，包含了开发环境和运行环境jre]；二是可以在工程名上右键——<span class="keyword">Properties</span>[快捷键Alt+<span class="keyword">Enter</span>]——Java Build <span class="keyword">Path</span>——Libraries。修改java编译器的方法：工程名上右键——<span class="keyword">Properties</span>[快捷键Alt+<span class="keyword">Enter</span>]——Java Compiler）
-
-   <span class="number">3</span>、创建class的时候一定要有包名，无论是写简单的程序还是复杂的工程，习惯很重要！
-
-   <span class="number">4</span>、必须先打断点才能进入debug模式。
-
-   <span class="number">5</span>、debug时的快捷键：
-</code></pre><p>F5：跳入 step into<br>F6：跳过 step over<br>F7：跳出 step return<br>drop to frame：跳到当前方法的第一行（一般是在不小心按F6按快了超过了你想看的那一行时用）<br>resume：跳到下一个断点（如果没有下一个，则运行完整个程序。如果当前方法有几百几千几万行，一行一行的F6太慢想直接跳到下一个方法的话可在下一个方法开头再打一个断点，然后resume）<br>watch：观察变量或表达式的值（选中要看的变量或者表达式然后右键）</p>
+        <p>放寒假之前网络中心的许可老师给我布置了个任务，寒假回去了解下“百度知道”的业务模式，开学后给我分配一台服务器用jsp的hibernate框架部署一个开源的问答系统（问答系统？想起了华科冰岩的iknow，不过iknow貌似是用php写的）。可惜寒假玩得太疯了基本把这事给抛在脑后了，现在数着日子差不多只有一个星期就开学了吧，开始准备收心了！好长时间手生没敲java代码，于是首先复习了一下，总结了一下自己平时使用Myeclipse进行开发时积累起来的一些技巧，主要是一些注意事项、个人用得最多的快捷键和程序的调试什么的，不过大神们请忽略这篇文章。。- -！<br><a id="more"></a><br>1、创建Workspace的名字的时候千万不要使用中文或者带空格。否则你之后运行程序时错都不知道自己错在哪儿了，虽然之后也可以处理，但比较麻烦，要养成一个好的习惯。</p>
+<p>2、创建Project的时候，指定的java运行环境版本一定要和编译器的版本相同或者更高，否则就会报错。（修改jre的方法：一是可以在创建Project的时候直接配置是使用默认的还是自己指定的jdk[一般是指定jdk，包含了开发环境和运行环境jre]；二是可以在工程名上右键——Properties[快捷键Alt+Enter]——Java Build Path——Libraries。修改java编译器的方法：工程名上右键——Properties[快捷键Alt+Enter]——Java Compiler）</p>
+<p>3、创建class的时候一定要有包名，无论是写简单的程序还是复杂的工程，习惯很重要！</p>
+<p>4、必须先打断点才能进入debug模式。</p>
+<p>5、debug时的快捷键：<br>F5：跳入 step into<br>F6：跳过 step over<br>F7：跳出 step return<br>drop to frame：跳到当前方法的第一行（一般是在不小心按F6按快了超过了你想看的那一行时用）<br>resume：跳到下一个断点（如果没有下一个，则运行完整个程序。如果当前方法有几百几千几万行，一行一行的F6太慢想直接跳到下一个方法的话可在下一个方法开头再打一个断点，然后resume）<br>watch：观察变量或表达式的值（选中要看的变量或者表达式然后右键）</p>
 <pre><code>   6、断点注意事项：
 </code></pre><p>(1)断点调试完成后，一定要在breakpoints视图中清除所有断点！<br>(2)断点调试完成后，一定要记得结束运行断点的JVM，否则你每调试一次开一个JVM最后机子卡死了没保存代码都不知道是怎么死的！</p>
 <pre><code>   7、常用快捷键：
